@@ -18,9 +18,6 @@ interface PostsProps {
 }
 
 export default function Posts({ posts }: PostsProps) {
-
-
-    console.log(posts)
     
     return (
         <>
@@ -33,7 +30,7 @@ export default function Posts({ posts }: PostsProps) {
 
                     { posts.map(post => (
 
-                        <Link href={`/posts/${post.slug}`} >
+                        <Link key={post.slug} href={`/posts/${post.slug}`} >
                             <a key={post.slug} >
                                 <time>{post.updatedAt}</time>
                                 <strong>{post.title}</strong>
@@ -78,7 +75,6 @@ export const getStaticProps: GetStaticProps = async () => {
         }
     })
 
-    console.log(JSON.stringify(response, null, 2))
 
     return {
         props: {
