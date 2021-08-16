@@ -30,7 +30,6 @@ export default async (req : NextApiRequest , res: NextApiResponse) => {
         let customerId = user.data.stripe_customer_id
 
         if (!customerId) {
-            console.log("Criando customer ")
             const stripeCustomer = await stripe.customers.create({
                 email: session.user.email,
                 // metadata
@@ -61,9 +60,12 @@ export default async (req : NextApiRequest , res: NextApiResponse) => {
             payment_method_types: ['card'],
             billing_address_collection: 'required',
             line_items: [
-                { price: 'price_1Ibmv4IzWQfCYXmGa6X3pGf6', quantity: 1}
+                { 
+                    price:  process.env.STRIPE_PRODUCT_PRICE_ID, 
+                    quantity: 1
+                }
             ],
-            mode: 'subscription',
+            mode: process.env.STRIPE_PAYMENT_MODE as "payment" | "subscription" | "setup",
             allow_promotion_codes: true,
             success_url: process.env.STRIPE_SUCCESS_URL,
             cancel_url: process.env.STRIPE_CANCEL_URL
