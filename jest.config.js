@@ -6,5 +6,8 @@ module.exports = {
     transform: {
         "^.+[.](jsx?|tsx?)$": "<rootDir>/node_modules/babel-jest"
     },
+    moduleNameMapper: {
+        "[.](s?css|sass)$": "identity-obj-proxy"
+    },
     testEnvironment: "jsdom"
 }
