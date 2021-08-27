@@ -87,7 +87,7 @@ export default NextAuth({
     
     },
     async redirect(url, baseUrl) {
-      return "https://ignews-jet.vercel.app"
+      return process.env.APP_BASE_URL
     },
   }
 })
