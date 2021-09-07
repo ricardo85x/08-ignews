@@ -1,2 +1,2 @@
-### App with NExtJS using Strap for payment, Github Auth to authencation, FaunaDB to save data and Prismc for CMS
-
+## Ig.News
+In this App we login using github, pay for a service subscription using stripe, save the data in the faunaDB database and get the content from prismic
